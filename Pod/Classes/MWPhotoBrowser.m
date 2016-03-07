@@ -1298,6 +1298,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _gridController.selectionMode = _displaySelectionButtons;
     _gridController.view.frame = self.view.bounds;
     _gridController.view.frame = CGRectOffset(_gridController.view.frame, 0, (self.startOnGrid ? -1 : 1) * self.view.bounds.size.height);
+    _gridController.view.backgroundColor = self.photoBrowserBackgroundColor;
 
     // Stop specific layout being triggered
     _skipNextPagingScrollViewPositioning = YES;
@@ -1636,6 +1637,9 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     _photoBrowserBackgroundColor = photoBrowserBackgroundColor;
     if (self.isViewLoaded)
         self.view.backgroundColor = photoBrowserBackgroundColor;
+    
+    if (_gridController)
+        _gridController.view.backgroundColor = photoBrowserBackgroundColor;
 }
 
 - (void)setPhotoBrowserBarTintColor:(UIColor *)photoBrowserBarTintColor

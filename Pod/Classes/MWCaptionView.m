@@ -9,27 +9,29 @@
 #import "MWCommon.h"
 #import "MWCaptionView.h"
 #import "MWPhoto.h"
+#import "MWPhotoBrowser.h"
 
 static const CGFloat labelPadding = 10;
 
 // Private
 @interface MWCaptionView () {
     id <MWPhoto> _photo;
-    UILabel *_label;    
+    UILabel *_label;
+    MWPhotoBrowser __weak *_photoBrowser;
 }
 @end
 
 @implementation MWCaptionView
 
-- (id)initWithPhoto:(id<MWPhoto>)photo {
+- (id)initWithPhoto:(id<MWPhoto>)photo browser:(MWPhotoBrowser *)browser {
     self = [super initWithFrame:CGRectMake(0, 0, 320, 44)]; // Random initial frame
     if (self) {
+        _photoBrowser = browser;
         self.userInteractionEnabled = NO;
         _photo = photo;
         self.barStyle = UIBarStyleBlackTranslucent;
-        self.tintColor = nil;
-        self.barTintColor = nil;
-        self.barStyle = UIBarStyleBlackTranslucent;
+        self.tintColor = browser.photoBrowserTintColor;
+        self.barTintColor = browser.photoBrowserBarTintColor;
         [self setBackgroundImage:nil forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
         [self setupCaption];
@@ -58,7 +60,7 @@ static const CGFloat labelPadding = 10;
     _label.lineBreakMode = NSLineBreakByWordWrapping;
 
     _label.numberOfLines = 0;
-    _label.textColor = [UIColor whiteColor];
+    _label.textColor = _photoBrowser.photoBrowserTextColor ?: [UIColor whiteColor];
     _label.font = [UIFont systemFontOfSize:17];
     if ([_photo respondsToSelector:@selector(caption)]) {
         _label.text = [_photo caption] ? [_photo caption] : @" ";

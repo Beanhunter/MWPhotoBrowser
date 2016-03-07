@@ -56,6 +56,7 @@
 @property (nonatomic, strong) IBInspectable UIColor *photoBrowserBackgroundColor;
 @property (nonatomic, strong) IBInspectable UIColor *photoBrowserTintColor;
 @property (nonatomic, strong) IBInspectable UIColor *photoBrowserBarTintColor;
+@property (nonatomic, strong) IBInspectable UIColor *photoBrowserTextColor;
 
 // Customise image selection icons as they are the only icons with a colour tint
 // Icon should be located in the app's main bundle
