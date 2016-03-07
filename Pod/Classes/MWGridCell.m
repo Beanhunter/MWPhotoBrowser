@@ -68,6 +68,7 @@
         _loadingIndicator.userInteractionEnabled = NO;
         _loadingIndicator.thicknessRatio = 0.1;
         _loadingIndicator.roundedCorners = NO;
+        _loadingIndicator.tintColor = [UIColor blackColor];
 		[self addSubview:_loadingIndicator];
         
         // Listen for photo loading notifications
@@ -200,6 +201,7 @@
             _loadingError.image = [UIImage imageForResourcePath: mwBundlePath(@"ImageError") ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]];
             _loadingError.userInteractionEnabled = NO;
             [_loadingError sizeToFit];
+            _loadingError.tintColor = [UIColor blackColor];
             [self addSubview:_loadingError];
         }
         _loadingError.frame = CGRectMake(floorf((self.bounds.size.width - _loadingError.frame.size.width) / 2.),
