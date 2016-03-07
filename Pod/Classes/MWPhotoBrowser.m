@@ -683,7 +683,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     } else {
         id <MWPhoto> photo = [self photoAtIndex:index];
         if ([photo respondsToSelector:@selector(caption)]) {
-            if ([photo caption]) captionView = [[MWCaptionView alloc] initWithPhoto:photo];
+            if ([photo caption]) captionView = [[MWCaptionView alloc] initWithPhoto:photo browser:self];
         }
     }
     captionView.alpha = [self areControlsHidden] ? 0 : 1; // Initial alpha

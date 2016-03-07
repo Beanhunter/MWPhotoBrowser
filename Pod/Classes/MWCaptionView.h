@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MWPhotoProtocol.h"
 
+@class MWPhotoBrowser;
+
 @interface MWCaptionView : UIToolbar
 
 // Init
-- (id)initWithPhoto:(id<MWPhoto>)photo;
+- (id)initWithPhoto:(id<MWPhoto>)photo browser:(MWPhotoBrowser *)browser;
 
 // To create your own custom caption view, subclass this view
 // and override the following two methods (as well as any other
