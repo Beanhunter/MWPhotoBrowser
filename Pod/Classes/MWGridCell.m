@@ -69,7 +69,7 @@
         _loadingIndicator.thicknessRatio = 0.1;
         _loadingIndicator.roundedCorners = NO;
         _loadingIndicator.progressTintColor = [UIColor colorWithRed:0.819607843f green:0.270588235f blue:0.0f alpha:1.0f];
-        _loadingIndicator.trackTintColor = [_loadingIndicator.progressTintColor colorWithAlphaComponent:0.3f];
+        _loadingIndicator.trackTintColor = _loadingIndicator.progressTintColor;
 		[self addSubview:_loadingIndicator];
         
         // Listen for photo loading notifications
