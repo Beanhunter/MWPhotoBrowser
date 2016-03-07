@@ -33,7 +33,7 @@
     if ((self = [super initWithFrame:frame])) {
 
         // Grey background
-        self.backgroundColor = [UIColor colorWithWhite:0.12 alpha:1];
+        self.backgroundColor = [UIColor colorWithWhite:0.88 alpha:1];
         
         // Image
         _imageView = [UIImageView new];
