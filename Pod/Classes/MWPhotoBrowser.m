@@ -149,7 +149,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     if (!_enableGrid) _startOnGrid = NO;
 	
 	// View
-	self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = self.photoBrowserBackgroundColor ?: [UIColor blackColor];
     self.view.clipsToBounds = YES;
 	
 	// Setup paging scrolling view
@@ -166,8 +166,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 	
     // Toolbar
     _toolbar = [[UIToolbar alloc] initWithFrame:[self frameForToolbarAtOrientation:self.interfaceOrientation]];
-    _toolbar.tintColor = [UIColor whiteColor];
-    _toolbar.barTintColor = nil;
+    _toolbar.tintColor = self.photoBrowserTintColor ?: [UIColor whiteColor];
+    _toolbar.barTintColor = self.photoBrowserBarTintColor;
     [_toolbar setBackgroundImage:nil forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     [_toolbar setBackgroundImage:nil forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsLandscapePhone];
     _toolbar.barStyle = UIBarStyleBlackTranslucent;
@@ -442,8 +442,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 - (void)setNavBarAppearance:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     UINavigationBar *navBar = self.navigationController.navigationBar;
-    navBar.tintColor = [UIColor whiteColor];
-    navBar.barTintColor = nil;
+    navBar.tintColor = self.photoBrowserTintColor ?: [UIColor whiteColor];
+    navBar.barTintColor = self.photoBrowserBarTintColor;
     navBar.shadowImage = nil;
     navBar.translucent = YES;
     navBar.barStyle = UIBarStyleBlackTranslucent;
@@ -1643,6 +1643,33 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
         [self.progressHUD hide:YES];
     }
     self.navigationController.navigationBar.userInteractionEnabled = YES;
+}
+
+#pragma mark - Customisable Colours
+
+- (void)setPhotoBrowserBackgroundColor:(UIColor *)photoBrowserBackgroundColor
+{
+    _photoBrowserBackgroundColor = photoBrowserBackgroundColor;
+    if (self.isViewLoaded)
+        self.view.backgroundColor = photoBrowserBackgroundColor;
+}
+
+- (void)setPhotoBrowserBarTintColor:(UIColor *)photoBrowserBarTintColor
+{
+    _photoBrowserBarTintColor = photoBrowserBarTintColor;
+    if (self.isViewLoaded) {
+        _toolbar.barTintColor = photoBrowserBarTintColor;
+        self.navigationController.navigationBar.barTintColor = photoBrowserBarTintColor;
+    }
+}
+
+- (void)setPhotoBrowserTintColor:(UIColor *)photoBrowserTintColor
+{
+    _photoBrowserTintColor = photoBrowserTintColor;
+    if (self.isViewLoaded) {
+        _toolbar.tintColor = photoBrowserTintColor;
+        self.navigationController.navigationBar.tintColor = photoBrowserTintColor;
+    }
 }
 
 @end
