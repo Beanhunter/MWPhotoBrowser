@@ -1672,4 +1672,8 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
     }
 }
 
+- (void)prepareForInterfaceBuilder
+{
+}
+
 @end
