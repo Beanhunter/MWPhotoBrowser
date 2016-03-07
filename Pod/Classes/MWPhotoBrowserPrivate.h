@@ -80,7 +80,6 @@
 // Layout
 - (void)layoutVisiblePages;
 - (void)performLayout;
-- (BOOL)presentingViewControllerPrefersStatusBarHidden;
 
 // Nav Bar Appearance
 - (void)setNavBarAppearance:(BOOL)animated;
