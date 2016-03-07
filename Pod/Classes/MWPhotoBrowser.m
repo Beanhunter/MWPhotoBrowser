@@ -1474,22 +1474,6 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
 	
 }
 
-- (BOOL)prefersStatusBarHidden {
-    if (!_leaveStatusBarAlone) {
-        return _statusBarShouldBeHidden;
-    } else {
-        return [self presentingViewControllerPrefersStatusBarHidden];
-    }
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
-    return UIStatusBarAnimationSlide;
-}
-
 - (void)cancelControlHiding {
 	// If a timer exists then cancel and release
 	if (_controlVisibilityTimer) {
