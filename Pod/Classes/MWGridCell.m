@@ -68,7 +68,8 @@
         _loadingIndicator.userInteractionEnabled = NO;
         _loadingIndicator.thicknessRatio = 0.1;
         _loadingIndicator.roundedCorners = NO;
-        _loadingIndicator.tintColor = [UIColor blackColor];
+        _loadingIndicator.progressTintColor = [UIColor colorWithRed:0.819607843f green:0.270588235f blue:0.0f alpha:1.0f];
+        _loadingIndicator.trackTintColor = [_loadingIndicator.progressTintColor colorWithAlphaComponent:0.3f];
 		[self addSubview:_loadingIndicator];
         
         // Listen for photo loading notifications
@@ -201,7 +202,7 @@
             _loadingError.image = [UIImage imageForResourcePath: mwBundlePath(@"ImageError") ofType:@"png" inBundle:[NSBundle bundleForClass:[self class]]];
             _loadingError.userInteractionEnabled = NO;
             [_loadingError sizeToFit];
-            _loadingError.tintColor = [UIColor blackColor];
+            _loadingError.tintColor = [UIColor colorWithRed:0.819607843f green:0.270588235f blue:0.0f alpha:1.0f];
             [self addSubview:_loadingError];
         }
         _loadingError.frame = CGRectMake(floorf((self.bounds.size.width - _loadingError.frame.size.width) / 2.),
