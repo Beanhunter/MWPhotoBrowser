@@ -1,3 +1,3 @@
-github "mluisbrown/DACircularProgress" "master"
-github "jdg/MBProgressHUD" "master"
+github "mluisbrown/DACircularProgress" "5b06959"
+github "jdg/MBProgressHUD" ~> 1.0.0
 github "rs/SDWebImage" ~> 3.7.3
